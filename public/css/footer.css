@@ -1,0 +1,157 @@
+.footer-section {
+  padding: 60px 80px 30px 80px;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-color-dark),
+    var(--footer-gradient-end)
+  );
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.footer-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+}
+
+.footer-bagian-kiri {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-img-container {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.footer-img {
+  height: 70px;
+  opacity: 0.9;
+  transition: 0.3s ease;
+}
+
+.footer-img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.footer-isi {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted-medium);
+}
+
+.sekat {
+  width: 1px;
+  background: var(--border-soft);
+  height: 215px;
+}
+
+/* ===== Social Media ===== */
+
+.footer-icon-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--text-muted-strong);
+  transition: 0.3s ease;
+}
+
+.footer-icon i {
+  font-size: 18px;
+  transition: 0.3s ease;
+}
+
+.footer-icon:hover {
+  color: var(--text-light);
+  transform: translateX(4px);
+}
+
+.instagram:hover i { color: #E4405F; }
+.tiktok:hover i { color: #FF0000; }
+.twitter:hover i { color: #2982ff; }
+.threads:hover i { color: #0bff1b; }
+.linkedin:hover i { color: #0077B5; }
+.youtube:hover i { color: #FF0000; }
+
+/* ===== Copyright ===== */
+
+.footer-copyright {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-soft);
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted-light);
+}
+
+.footer-copyright a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-copyright a:hover {
+  opacity: 0.8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media screen and (max-width: 768px) {
+
+  .footer-section {
+    padding: 40px 20px 25px 20px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .footer-img-container {
+    justify-content: center;
+  }
+
+  .sekat {
+    width: 60%;
+    height: 1px;
+  }
+
+  .footer-icon-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-icon {
+    font-size: 18px;
+  }
+
+  .footer-icon:hover {
+    color: var(--text-light);
+    transform: translateY(-4px);
+  }
+
+  .icon-text {
+    display: none;
+  }
+
+  .footer-isi {
+    font-size: 13px;
+  }
+}

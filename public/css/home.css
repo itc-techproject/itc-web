@@ -1,0 +1,370 @@
+
+/* ===== HERO SECTION ===== */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-color-dark);
+  text-align: center;
+}
+
+/* Background Image */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/home_divisi.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+/* Dark Gradient Overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 13, 16, 0.7),
+    rgba(11, 13, 16, 0.9)
+  );
+  z-index: 2;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+  padding: 2rem;
+  color: var(--text-light);
+}
+
+.hero-logo {
+  width: 250px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.hero-content p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-logo {
+    width: 90px;
+  }
+}
+
+/* ===== CAROUSEL ===== */
+
+.carousel {
+  background: var(--section-bg-color);
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--border-soft);
+  background: var(--surface-card);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: var(--accent-soft-bg);
+  border-color: var(--accent-primary);
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+}
+
+.carousel-track {
+  display: flex;
+	align-items: stretch;
+  transition: transform 0.6s ease;	
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel-track:active {
+  cursor: grabbing;
+}
+
+.carousel-item {
+	flex: 0 0 33.3333%;
+  min-width: 33.3333%;
+  padding: 1rem;
+  box-sizing: border-box;
+	display: flex;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.carousel-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.carousel-card {
+	display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 5px 15px var(--accent-glow);
+}
+
+.carousel-card:hover img {
+  transform: scale(1.08);
+}
+
+.carousel-content {
+  padding: 1.3rem;
+	display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.carousel-content h3 {
+  color: var(--text-light);
+  margin-bottom: 0.6rem;
+	display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.carousel-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive */
+/* Tablet */
+@media (max-width: 1024px) {
+  .carousel-item {
+		flex: 0 0 50%;
+    min-width: 50%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .carousel-item {
+		flex: 0 0 100%;
+    min-width: 100%;
+  }
+
+  .carousel-item img {
+    height: 250px;
+		flex: 0 0 100%;
+    min-width: 100%;
+  }
+
+  .carousel-header {
+    flex-direction: column;
+  }
+}
+
+/* ===== GENERAL ===== */
+
+.main-content {
+  background: var(--section-bg-color);
+}
+
+.section {
+  padding: 100px 0 20px 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  font-size: 34px;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  letter-spacing: 2px;
+}
+
+.section-description,
+.section-text {
+  color: var(--text-muted-medium);
+  line-height: 1.8;
+}
+
+/* ===== GRID ===== */
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.align-center {
+  align-items: center;
+}
+
+/* ===== CARD ===== */
+.glass-section .card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-soft);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: var(--accent-primary);
+}
+
+.card p,
+.card li {
+  color: var(--text-muted-medium);
+}
+
+.card ol {
+  padding-left: 20px;
+}
+
+/* ===== IMAGE ===== */
+.image-frame {
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  border: 1px solid var(--image-frame-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.image-frame img {
+  width: 100%;
+  display: block;
+}
+
+/* ===== QUOTES ===== */
+.quotes-section {
+  text-align: center;
+}
+
+.quote-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+}
+
+.quote-img {
+  width: 400px;
+}
+
+.quote-text p {
+  font-size: 18px;
+  color: var(--text-soft);
+}
+
+.quote-text span {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+.quote-text small {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-muted-light);
+}
+
+
+/* ===== KABINET ===== */
+
+.kabinet-section {
+  background: var(--section-bg-color);
+}
+
+.video-frame {
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  border: 1px solid var(--surface-card-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.video-frame iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: none;
+}
+
+.kabinet-text p {
+  color: var(--text-muted-medium);
+  margin-bottom: 20px;
+}
+
+/* Resposive*/
+@media (max-width: 768px) {
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-wrapper {
+    flex-direction: column;
+  }
+}

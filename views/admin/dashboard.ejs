@@ -1,0 +1,28 @@
+<h1>Dashboard Blog</h1>
+
+<a href="/admin/add">Tambah Blog</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Judul</th>
+      <th>Kategori</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% blogs.forEach(blog => { %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.category %></td>
+        <td>
+          <a href="/admin/edit/<%= blog._id %>">Edit</a>
+
+          <form action="/admin/delete/<%= blog._id %>" method="POST" style="display:inline;">
+            <button type="submit">Hapus</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

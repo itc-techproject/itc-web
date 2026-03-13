@@ -1,0 +1,77 @@
+:root {
+
+  /* ===== CORE ===== */
+  --primary: #0b0d10;         
+  --secondary: #f1f5f9;     
+
+  --bg-color-dark: #0b0d10;
+  --bg-color-light: #f1f5f9;
+  --section-bg-color: #111418; 
+
+  /* ===== TEXT ===== */
+  --text-dark: #0b0d10;
+  --text-light: #f1f5f9;
+
+  --text-soft: rgba(241, 245, 249, 0.92);
+  --text-muted: rgba(241, 245, 249, 0.75);
+  --text-muted-strong: rgba(241, 245, 249, 0.7);
+  --text-muted-medium: rgba(241, 245, 249, 0.6);
+  --text-muted-light: rgba(241, 245, 249, 0.5);
+
+  /* ===== NAVBAR ===== */
+  --navbar-height-desktop: 70px;
+  --navbar-height-mobile: 65px;
+
+  /* ===== SURFACE ===== */
+  --surface-dropdown: #161a20;
+  --surface-overlay: rgba(11, 13, 16, 0.96);
+  --surface-hover: rgba(255, 255, 255, 0.05);
+
+  --border-soft: rgba(255, 255, 255, 0.06);
+
+  --shadow-dropdown: 0 20px 50px rgba(0, 0, 0, 0.45);
+
+  --radius-small: 6px;
+  --radius-medium: 12px;
+  --radius-large: 20px;
+
+  /* ===== FOOTER ===== */
+  --footer-gradient-end: #07090c;
+
+  /* ===== CARD ===== */
+  --surface-card: rgba(255, 255, 255, 0.03);
+  --surface-card-border: rgba(255, 255, 255, 0.07);
+
+  /* ===== ACCENT ===== */
+  --accent-primary: #9ca3af;       /* cool gray accent */
+  --accent-glow: rgba(156, 163, 175, 0.35);
+  --accent-soft-bg: rgba(156, 163, 175, 0.08);
+
+  /* ===== IMAGE FRAME ===== */
+  --image-frame-border: rgba(255, 255, 255, 0.1);
+
+  /* ===== SHADOW ===== */
+  --shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.5);
+
+  /* ===== INTERACTION ===== */
+  --transition-fast: 0.25s ease;
+  --transition-normal: 0.35s ease;
+
+  /* ===== CARD DEPTH ===== */
+  --shadow-card-hover: 0 20px 45px rgba(0, 0, 0, 0.6);
+
+  /* ===== CARD BORDER ENHANCE ===== */
+  --border-card-hover: rgba(255, 255, 255, 0.12);
+
+  /* ===== IMAGE EFFECT ===== */
+  --image-zoom-scale: 1.06;
+
+  /* ===== PAGE STRUCTURE ===== */
+  --container-width: 1200px;
+  --section-padding: 100px;
+  --section-padding-small: 60px;
+
+  /* ===== SURFACE VARIATION ===== */
+  --surface-elevated: rgba(255, 255, 255, 0.05);
+  
+}

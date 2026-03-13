@@ -1,0 +1,98 @@
+/* ============================= */
+/* ADMIN FORM */
+/* ============================= */
+
+.admin-form-section {
+  background: var(--bg-color-dark);
+  padding: 100px 20px;
+  color: var(--text-light);
+  min-height: 100vh;
+}
+
+.admin-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius-large);
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+}
+
+.admin-form-header h1 {
+  margin-bottom: 10px;
+}
+
+.admin-form-header p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.admin-form .form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-form label {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  padding: 12px 15px;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--border-soft);
+  background: var(--surface-elevated);
+  color: var(--text-light);
+  transition: var(--transition-fast);
+}
+
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-soft-bg);
+}
+
+.admin-form textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-primary {
+  padding: 12px 20px;
+  border-radius: var(--radius-medium);
+  border: none;
+  cursor: pointer;
+  background: var(--accent-primary);
+  color: var(--primary);
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  padding: 12px 20px;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--border-soft);
+  color: var(--text-light);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-hover);
+}
