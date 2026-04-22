@@ -54,7 +54,9 @@ if (searchInput) {
 }
 
 async function fetchBlogs() {
-
+  currentPage = 1;
+  hasMore = true;
+  
   const searchValue = searchInput ? searchInput.value.trim() : '';
 
   let url = '/api/blog?';
@@ -110,9 +112,20 @@ async function loadMoreBlogs() {
   if (isLoading || !hasMore) return;
 
   isLoading = true;
-  currentPage++;
 
-  const response = await fetch(`/api/blog?page=${currentPage}`);
+  const searchValue = searchInput ? searchInput.value.trim() : '';
+
+  let url = `/api/blog?page=${currentPage}`;
+
+  if (currentCategory !== 'semua') {
+    url += `&category=${currentCategory}`;
+  }
+
+  if (searchValue) {
+    url += `&search=${encodeURIComponent(searchValue)}`;
+  }
+
+  const response = await fetch(url);
   const blogs = await response.json();
 
   if (blogs.length === 0) {
@@ -121,7 +134,11 @@ async function loadMoreBlogs() {
     return;
   }
 
+  currentPage++; // ⬅️ pindah ke sini (SETELAH sukses)
+
   appendBlogs(blogs);
+  observeCards(); // kalau pakai animasi tadi
+
   isLoading = false;
 }
 
