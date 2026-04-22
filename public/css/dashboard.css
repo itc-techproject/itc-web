@@ -1,0 +1,85 @@
+.dashboard-body {
+    background: var( --section-bg-color);
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: var(--text-light);
+}
+
+/* ===== TITLE ===== */
+.dashboard-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+
+/* ===== TABLE WRAPPER ===== */
+.table-wrapper {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  margin: 30px 0 0 0;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* HEADER */
+thead {
+  background: var(--section-bg-color);
+}
+
+th {
+  text-align: left;
+  padding: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* BODY */
+td {
+  padding: 16px;
+  border-top: 1px solid var(--border-soft);
+  color: var(--text-soft);
+}
+
+/* ROW HOVER */
+tbody tr:hover {
+  background: var(--surface-hover);
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-btn {
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--accent-primary);
+}
+
+.action-btn:hover {
+  text-decoration: underline;
+}
+
+/* DELETE BUTTON */
+.btn-delete {
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  color: #ff6b6b;
+  padding: 5px 10px;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-delete:hover {
+  background: rgba(255, 0, 0, 0.1);
+}

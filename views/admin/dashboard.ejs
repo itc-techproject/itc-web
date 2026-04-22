@@ -1,28 +1,37 @@
-<h1>Dashboard Blog</h1>
+<% css = '<link rel="stylesheet" href="/css/dashboard.css">' %>
 
-<a href="/admin/add">Tambah Blog</a>
+<body class="dashboard-body">
 
-<table>
-  <thead>
-    <tr>
-      <th>Judul</th>
-      <th>Kategori</th>
-      <th>Aksi</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% blogs.forEach(blog => { %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.category %></td>
-        <td>
-          <a href="/admin/edit/<%= blog._id %>">Edit</a>
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Dashboard Blog</h1>
 
-          <form action="/admin/delete/<%= blog._id %>" method="POST" style="display:inline;">
-            <button type="submit">Hapus</button>
-          </form>
-        </td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
+  <a href="/admin/add" class="btn-primary">+ Tambah Blog</a>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Judul</th>
+          <th>Kategori</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% blogs.forEach(blog => { %>
+          <tr>
+            <td><%= blog.title %></td>
+            <td><%= blog.category %></td>
+            <td>
+              <a href="/admin/edit/<%= blog._id %>" class="action-btn">Edit</a>
+
+              <form action="/admin/delete/<%= blog._id %>" method="POST" style="display:inline;">
+                <button type="submit" class="btn-delete">Hapus</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
