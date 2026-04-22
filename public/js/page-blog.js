@@ -56,6 +56,10 @@ if (searchInput) {
 async function fetchBlogs() {
   currentPage = 1;
   hasMore = true;
+
+  blogGrid.innerHTML = ""; 
+
+  await loadMoreBlogs();  
   
   const searchValue = searchInput ? searchInput.value.trim() : '';
 
@@ -143,26 +147,31 @@ async function loadMoreBlogs() {
 }
 
 function appendBlogs(blogs) {
+  blogs.forEach(blog => {
+    const el = document.createElement('div');
 
-  blogGrid.innerHTML += blogs.map(blog => `
-    <a href="/blog/${blog.slug}" class="blog-link">
-      <article class="blog-card">
-        <div class="blog-image">
-          <img src="${blog.image}" alt="">
-          <span class="category-badge">${blog.category}</span>
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span>${new Date(blog.createdAt).toDateString()}</span>
-            <span>•</span>
-            <span>${blog.author}</span>
+    el.innerHTML = `
+      <a href="/blog/${blog.slug}" class="blog-link">
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="${blog.image}" alt="">
+            <span class="category-badge">${blog.category}</span>
           </div>
-          <h3 class="blog-title-card">${blog.title}</h3>
-          <p>${blog.excerpt || ''}</p>
-        </div>
-      </article>
-    </a>
-  `).join('');
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span>${new Date(blog.createdAt).toDateString()}</span>
+              <span>•</span>
+              <span>${blog.author}</span>
+            </div>
+            <h3 class="blog-title-card">${blog.title}</h3>
+            <p>${blog.excerpt || ''}</p>
+          </div>
+        </article>
+      </a>
+    `;
+
+    blogGrid.appendChild(el.firstElementChild);
+  });
 }
 
 const observer = new IntersectionObserver(entries => {
@@ -172,3 +181,7 @@ const observer = new IntersectionObserver(entries => {
 });
 
 observer.observe(document.querySelector('.scroll-loader'));
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadMoreBlogs();
+});
