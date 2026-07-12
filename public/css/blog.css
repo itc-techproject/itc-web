@@ -347,8 +347,9 @@
 
 .blog-detail .content {
   font-size: 1.05rem;
-  line-height: 1.9;
+  line-height: 1.1;
   color: var(--text-soft);
+  white-space: pre-line;
 }
 
 /* Paragraph spacing */
