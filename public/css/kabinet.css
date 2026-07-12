@@ -48,6 +48,11 @@ div[id] {
     letter-spacing: 2px;
 }
 
+header img {
+    padding: 20px 0 0 0;
+    width: 100px;
+}
+
 .section-title {
     text-align: center;
     font-size: 1.5rem;
