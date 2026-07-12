@@ -203,10 +203,11 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  background: var(--accent-soft-bg);
-  color: var(--accent-primary);
+  background: var(--accent-glow);
+  color: var(--text-dark);
   padding: 6px 12px;
   font-size: 0.75rem;
+  font-weight: bold;
   border-radius: 50px;
   backdrop-filter: blur(6px);
 }
