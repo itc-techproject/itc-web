@@ -8,41 +8,67 @@
       <p>Buat artikel baru untuk ditampilkan di halaman blog.</p>
     </div>
 
-    <form action="/admin/add" method="POST" class="admin-form">
+    <form action="/admin/add" method="POST" enctype="multipart/form-data" class="admin-form">
 
+      <!-- JUDUL -->
       <div class="form-group">
         <label>Judul Artikel</label>
-        <input type="text" name="title" required>
+        <input 
+          type="text" 
+          name="title" 
+          maxlength="60" 
+          placeholder="Maksimal 60 karakter"
+          required>
+        <small class="char-info">0 / 60</small>
       </div>
 
+      <!-- GAMBAR -->
       <div class="form-group">
-        <label>URL Gambar</label>
-        <input type="text" name="image" placeholder="https://...">
+        <label>Upload Gambar</label>
+        <input 
+          type="file" 
+          name="image" 
+          accept=".jpg,.jpeg,.png"
+          required>
+        <small class="char-info">Format: JPG/PNG • Maks: 1MB</small>
       </div>
 
+      <!-- KATEGORI -->
       <div class="form-group">
         <label>Kategori</label>
         <select name="category">
-          <option value="event">Event</option>
-          <option value="aktivitas">Aktivitas</option>
-          <option value="teknologi">Teknologi</option>
-          <option value="informasi">Informasi</option>
-          <option value="komunikasi">Komunikasi</option>
-          <option value="pengembangan">Pengembangan</option>
-          <option value="lainnya">Lainnya</option>
+          <option value="Event">Event</option>
+          <option value="Aktivitas">Aktivitas</option>
+          <option value="Teknologi">Teknologi</option>
+          <option value="Informasi">Informasi</option>
+          <option value="Komunikasi">Komunikasi</option>
+          <option value="Pengembangan">Pengembangan</option>
+          <option value="Lainnya">Lainnya</option>
         </select>
       </div>
 
+      <!-- EXCERPT -->
       <div class="form-group">
         <label>Ringkasan (Excerpt)</label>
-        <input type="text" name="excerpt">
+        <input 
+          type="text" 
+          name="excerpt" 
+          maxlength="150"
+          placeholder="Maksimal 150 karakter">
+        <small class="char-info">0 / 150</small>
       </div>
 
+      <!-- CONTENT -->
       <div class="form-group">
         <label>Isi Artikel</label>
-        <textarea name="content" rows="10" required></textarea>
+        <textarea 
+          name="content" 
+          rows="10" 
+          placeholder="Tulis isi artikel di sini..."
+          required></textarea>
       </div>
 
+      <!-- ACTION -->
       <div class="form-actions">
         <button type="submit" class="btn-primary">Simpan Artikel</button>
         <a href="/admin/dashboard" class="btn-secondary">Batal</a>
@@ -52,3 +78,23 @@
 
   </div>
 </section>
+
+<!-- OPTIONAL: LIVE CHARACTER COUNT -->
+<script>
+  const titleInput = document.querySelector('input[name="title"]');
+  const excerptInput = document.querySelector('input[name="excerpt"]');
+
+  const counters = document.querySelectorAll('.char-info');
+
+  if (titleInput) {
+    titleInput.addEventListener('input', () => {
+      counters[0].textContent = titleInput.value.length + " / 60";
+    });
+  }
+
+  if (excerptInput) {
+    excerptInput.addEventListener('input', () => {
+      counters[2].textContent = excerptInput.value.length + " / 150";
+    });
+  }
+</script>

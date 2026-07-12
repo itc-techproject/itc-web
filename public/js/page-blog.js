@@ -5,11 +5,7 @@ const filterGroup = document.querySelector('.filter-group');
 const searchInput = document.querySelector('.search-input');
 const searchBtn = document.querySelector('.search-btn');
 
-let currentPage = 1;
-let isLoading = false;
-let hasMore = true;
-
-let currentCategory = 'semua';
+let currentCategory = 'Semua';
 
 if (window.innerWidth > 768 && toggleBtn) {
   toggleBtn.disabled = true;
@@ -25,7 +21,7 @@ if (toggleBtn) {
 }
 
 /* =========================
-   AJAX FILTER
+   FILTER
 ========================= */
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -39,53 +35,26 @@ buttons.forEach(button => {
   });
 });
 
+/* =========================
+   SEARCH
+========================= */
 if (searchBtn) {
-  searchBtn.addEventListener('click', () => {
-    fetchBlogs();
-  });
+  searchBtn.addEventListener('click', fetchBlogs);
 }
 
 if (searchInput) {
   searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      fetchBlogs();
-    }
+    if (e.key === 'Enter') fetchBlogs();
   });
 }
 
-async function fetchBlogs() {
-  currentPage = 1;
-  hasMore = true;
 
-  blogGrid.innerHTML = ""; 
-
-  await loadMoreBlogs();  
-  
-  const searchValue = searchInput ? searchInput.value.trim() : '';
-
-  let url = '/api/blog?';
-
-  if (currentCategory !== 'semua') {
-    url += `category=${currentCategory}&`;
-  }
-
-  if (searchValue) {
-    url += `search=${encodeURIComponent(searchValue)}`;
-  }
-
-  const response = await fetch(url);
-  const blogs = await response.json();
-
-  renderBlogs(blogs);
-
-  if (window.innerWidth <= 768) {
-    filterGroup.classList.remove('active');
-  }
-}
-
+/* =========================
+   RENDER
+========================= */
 function renderBlogs(blogs) {
 
-  if (blogs.length === 0) {
+  if (!blogs || blogs.length === 0) {
     blogGrid.innerHTML = "<p>Tidak ada artikel.</p>";
     return;
   }
@@ -111,77 +80,31 @@ function renderBlogs(blogs) {
   `).join('');
 }
 
-async function loadMoreBlogs() {
+/* =========================
+   FETCH DATA
+========================= */
+function fetchBlogs() {
 
-  if (isLoading || !hasMore) return;
+  const search = searchInput.value;
 
-  isLoading = true;
+  const params = new URLSearchParams();
 
-  const searchValue = searchInput ? searchInput.value.trim() : '';
-
-  let url = `/api/blog?page=${currentPage}`;
-
-  if (currentCategory !== 'semua') {
-    url += `&category=${currentCategory}`;
+  if (currentCategory && currentCategory !== 'Semua') {
+    params.append('category', currentCategory);
   }
 
-  if (searchValue) {
-    url += `&search=${encodeURIComponent(searchValue)}`;
+  if (search) {
+    params.append('search', search);
   }
 
-  const response = await fetch(url);
-  const blogs = await response.json();
-
-  if (blogs.length === 0) {
-    hasMore = false;
-    document.querySelector('.scroll-loader').innerHTML = "Tidak ada artikel lagi.";
-    return;
-  }
-
-  currentPage++; // ⬅️ pindah ke sini (SETELAH sukses)
-
-  appendBlogs(blogs);
-  observeCards(); // kalau pakai animasi tadi
-
-  isLoading = false;
+  fetch(`/blog?${params.toString()}`, {
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      renderBlogs(data);
+    })
+    .catch(err => console.error(err));
 }
-
-function appendBlogs(blogs) {
-  blogs.forEach(blog => {
-    const el = document.createElement('div');
-
-    el.innerHTML = `
-      <a href="/blog/${blog.slug}" class="blog-link">
-        <article class="blog-card">
-          <div class="blog-image">
-            <img src="${blog.image}" alt="">
-            <span class="category-badge">${blog.category}</span>
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span>${new Date(blog.createdAt).toDateString()}</span>
-              <span>•</span>
-              <span>${blog.author}</span>
-            </div>
-            <h3 class="blog-title-card">${blog.title}</h3>
-            <p>${blog.excerpt || ''}</p>
-          </div>
-        </article>
-      </a>
-    `;
-
-    blogGrid.appendChild(el.firstElementChild);
-  });
-}
-
-const observer = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting) {
-    loadMoreBlogs();
-  }
-});
-
-observer.observe(document.querySelector('.scroll-loader'));
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadMoreBlogs();
-});

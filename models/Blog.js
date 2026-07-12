@@ -28,15 +28,15 @@ const blogSchema = new mongoose.Schema({
   category: {
     type: String,
     enum: [
-      "event",
-      "aktivitas",
-      "teknologi",
-      "informasi",
-      "komunikasi",
-      "pengembangan",
-      "lainnya"
+      "Event",
+      "Aktivitas",
+      "Teknologi",
+      "Informasi",
+      "Komunikasi",
+      "Pengembangan",
+      "Lainnya"
     ],
-    default: "lainnya"
+    default: "Lainnya"
   },
 
   author: {

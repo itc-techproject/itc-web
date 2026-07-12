@@ -33,55 +33,36 @@ pages.forEach(page => {
     });
 });
 
-/* BLOG LIST (DINAMIS) */
 router.get('/blog', async (req, res) => {
     const category = req.query.category;
+    const search = req.query.search;
 
     let filter = {};
 
-    if (category && category !== 'semua') {
+    // FILTER CATEGORY
+    if (category && category.toLowerCase() !== 'semua') {
         filter.category = category;
+    }
+
+    // SEARCH (title + excerpt)
+    if (search) {
+        filter.$or = [
+            { title: { $regex: search, $options: 'i' } },
+            { excerpt: { $regex: search, $options: 'i' } }
+        ];
     }
 
     const blogs = await Blog.find(filter).sort({ createdAt: -1 });
 
+    // kalau request dari fetch (AJAX)
+    if (req.headers.accept && req.headers.accept.includes('application/json')) {
+        return res.json(blogs);
+    }
+
     res.render('pages/blog', { 
         blogs,
-        activeCategory: category || 'semua'
+        activeCategory: category || 'Semua'
     });
-});
-
-router.get('/api/blog', async (req, res) => {
-
-  const category = req.query.category;
-  const search = req.query.search;
-
-  const page = parseInt(req.query.page) || 1;
-  const limit = 6;
-  const skip = (page - 1) * limit;
-
-  let filter = {};
-
-  // Filter kategori
-  if (category && category !== 'semua') {
-    filter.category = category;
-  }
-
-  // Filter search
-  if (search) {
-    filter.$or = [
-      { title: { $regex: search, $options: 'i' } },
-      { excerpt: { $regex: search, $options: 'i' } },
-      { content: { $regex: search, $options: 'i' } }
-    ];
-  }
-
-  const blogs = await Blog.find(filter)
-    .sort({ createdAt: -1 })
-    .skip(skip)
-    .limit(limit);
-
-  res.json(blogs);
 });
 
 /* BLOG DETAIL */
@@ -92,5 +73,6 @@ router.get('/blog/:slug', async (req, res) => {
 
     res.render('pages/blog-detail', { blog });
 });
+
 
 module.exports = router;
