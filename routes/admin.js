@@ -5,6 +5,23 @@ const Blog = require("../models/Blog");
 const User = require("../models/User");
 const auth = require("../middleware/authMiddleware");
 const slugify = require("slugify");
+const multer = require("multer");
+const path = require("path");
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "public/images/blog");
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        cb(null, Date.now() + ext);
+    }
+});
+const upload = multer({
+    storage,
+    limits: {
+        fileSize: 1024 * 1024 // 1 MB
+    }
+});
 
 /* LOGIN PAGE */
 router.get('/login', (req, res) => {
@@ -56,8 +73,12 @@ router.get('/add', auth, (req, res) => {
 });
 
 /* ADD BLOG PROCESS */
-router.post('/add', auth, async (req, res) => {
-    const { title, content, image, category, excerpt } = req.body;
+router.post('/add', auth, upload.single("image"), async (req, res) => {
+    const { title, content, category, excerpt } = req.body;
+
+    const image = req.file
+        ? "/images/blog/" + req.file.filename
+        : "";
 
     const slug = slugify(title, { lower: true, strict: true });
 
@@ -81,19 +102,24 @@ router.get('/edit/:id', auth, async (req, res) => {
 });
 
 /* UPDATE BLOG */
-router.post('/edit/:id', auth, async (req, res) => {
-    const { title, content, image, category, excerpt } = req.body;
+router.post('/edit/:id', auth, upload.single("image"), async (req, res) => {
+    const { title, content, category, excerpt } = req.body;
 
     const slug = slugify(title, { lower: true, strict: true });
 
-    await Blog.findByIdAndUpdate(req.params.id, {
+    const updateData = {
         title,
         slug,
         content,
-        image,
         category,
         excerpt
-    });
+    };
+
+    if (req.file) {
+        updateData.image = "/images/blog/" + req.file.filename;
+    }
+
+    await Blog.findByIdAndUpdate(req.params.id, updateData);
 
     res.redirect('/admin/dashboard');
 });

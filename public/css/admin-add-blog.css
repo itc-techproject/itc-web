@@ -63,6 +63,13 @@
   resize: vertical;
 }
 
+.error-message{
+    display:block;
+    color:#dc3545;
+    margin-top:6px;
+    font-size:14px;
+}
+
 .form-actions {
   margin-top: 30px;
   display: flex;

@@ -11,6 +11,7 @@
     <table>
       <thead>
         <tr>
+          <th>Gambar</th>
           <th>Judul</th>
           <th>Kategori</th>
           <th>Aksi</th>
@@ -19,6 +20,9 @@
       <tbody>
         <% blogs.forEach(blog => { %>
           <tr>
+            <td>
+              <img src="<%= blog.image %>" alt="<%= blog.title %>" class="blog-thumbnail">
+            </td>
             <td><%= blog.title %></td>
             <td><%= blog.category %></td>
             <td>

@@ -27,10 +27,12 @@
         <label>Upload Gambar</label>
         <input 
           type="file" 
+          id="image"
           name="image" 
           accept=".jpg,.jpeg,.png"
           required>
         <small class="char-info">Format: JPG/PNG • Maks: 1MB</small>
+        <small id="imageError" class="error-message"></small>
       </div>
 
       <!-- KATEGORI -->
@@ -79,7 +81,7 @@
   </div>
 </section>
 
-<!-- OPTIONAL: LIVE CHARACTER COUNT -->
+<!-- BATAS MAX KARAKTER -->
 <script>
   const titleInput = document.querySelector('input[name="title"]');
   const excerptInput = document.querySelector('input[name="excerpt"]');
@@ -97,4 +99,27 @@
       counters[2].textContent = excerptInput.value.length + " / 150";
     });
   }
+</script>
+
+<!-- PESAN ERROR IMAGE -->
+ <script>
+const imageInput = document.getElementById("image");
+const error = document.getElementById("imageError");
+
+imageInput.addEventListener("change", function () {
+
+    error.textContent = "";
+
+    if (!this.files.length) return;
+
+    const file = this.files[0];
+
+    if(file.size > 1024 * 1024){
+
+        error.textContent = "Ukuran gambar maksimal 1 MB.";
+
+        this.value = "";
+    }
+
+});
 </script>

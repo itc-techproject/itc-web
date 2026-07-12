@@ -16,6 +16,16 @@
   margin-bottom: 20px;
 }
 
+/* ===== BLOG IMAGE ===== */
+.blog-thumbnail {
+  width: 120px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: var(--radius-small);
+  border: 1px solid var(--border-soft);
+  display: block;
+}
+
 
 /* ===== TABLE WRAPPER ===== */
 .table-wrapper {
