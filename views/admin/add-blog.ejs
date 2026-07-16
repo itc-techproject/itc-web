@@ -1,7 +1,13 @@
 <% css = '<link rel="stylesheet" href="/css/admin-add-blog.css">' %>
 
 <section class="admin-form-section">
+  <a href="/admin/dashboard" class="back-btn">
+    <i class="bi bi-arrow-left"></i>
+    Kembali
+  </a>
+
   <div class="admin-form-container">
+
 
     <div class="admin-form-header">
       <h1>Tambah Artikel</h1>
@@ -25,13 +31,8 @@
       <!-- GAMBAR -->
       <div class="form-group">
         <label>Upload Gambar</label>
-        <input 
-          type="file" 
-          id="image"
-          name="image" 
-          accept=".jpg,.jpeg,.png"
-          required>
-        <small class="char-info">Format: JPG/PNG • Maks: 1MB</small>
+        <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png" required>
+        <small class="char-info">Max: 1MB</small>
         <small id="imageError" class="error-message"></small>
       </div>
 
@@ -101,7 +102,7 @@
   }
 </script>
 
-<!-- PESAN ERROR IMAGE -->
+<!-- BATAS MAX IMAGE -->
  <script>
 const imageInput = document.getElementById("image");
 const error = document.getElementById("imageError");

@@ -1,6 +1,11 @@
 <% css = '<link rel="stylesheet" href="/css/admin-add-blog.css">' %>
 
 <section class="admin-form-section">
+  <a href="/admin/dashboard" class="back-btn">
+    <i class="bi bi-arrow-left"></i>
+    Kembali
+  </a>
+
   <div class="admin-form-container">
 
     <div class="admin-form-header">
@@ -10,20 +15,30 @@
     <form action="/admin/edit/<%= blog._id %>" method="POST" enctype="multipart/form-data" class="admin-form">
 
       <div class="form-group">
-        <label>Judul</label>
-        <input type="text" name="title" value="<%= blog.title %>" required>
+        <label>Judul Artikel</label>
+        <input type="text" name="title" maxlength="60" placeholder="Maksimal 60 karakter" value="<%= blog.title %>" required>
+        <small class="char-info">0 / 60</small>
       </div>
 
       <div class="form-group">
         <img src="<%= blog.image %>" alt="Preview" width="200">
         <label>Upload Gambar</label>
-        <input type="file" name="image" accept=".jpg,.jpeg,.png">
+        <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png">
         <small class="char-info">Kosongkan jika tidak ingin mengganti gambar.</small>
+        <small id="imageError" class="error-message"></small>
       </div>
 
       <div class="form-group">
         <label>Kategori</label>
-        <input type="text" name="category" value="<%= blog.category %>">
+        <select name="category" value="<%= blog.category %>">
+          <option value="Event">Event</option>
+          <option value="Aktivitas">Aktivitas</option>
+          <option value="Teknologi">Teknologi</option>
+          <option value="Informasi">Informasi</option>
+          <option value="Komunikasi">Komunikasi</option>
+          <option value="Pengembangan">Pengembangan</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
       </div>
 
       <div class="form-group">
@@ -45,3 +60,47 @@
 
   </div>
 </section>
+
+
+<!-- BATAS MAX KARAKTER -->
+<script>
+  const titleInput = document.querySelector('input[name="title"]');
+  const excerptInput = document.querySelector('input[name="excerpt"]');
+
+  const counters = document.querySelectorAll('.char-info');
+
+  if (titleInput) {
+    titleInput.addEventListener('input', () => {
+      counters[0].textContent = titleInput.value.length + " / 60";
+    });
+  }
+
+  if (excerptInput) {
+    excerptInput.addEventListener('input', () => {
+      counters[2].textContent = excerptInput.value.length + " / 150";
+    });
+  }
+</script>
+
+<!-- BATAS MAX IMAGE -->
+ <script>
+const imageInput = document.getElementById("image");
+const error = document.getElementById("imageError");
+
+imageInput.addEventListener("change", function () {
+
+    error.textContent = "";
+
+    if (!this.files.length) return;
+
+    const file = this.files[0];
+
+    if(file.size > 1024 * 1024){
+
+        error.textContent = "Ukuran gambar maksimal 1 MB.";
+
+        this.value = "";
+    }
+
+});
+</script>
