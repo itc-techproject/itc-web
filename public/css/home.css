@@ -107,6 +107,17 @@
   border-color: var(--accent-primary);
 }
 
+.carousel-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.carousel-link:hover {
+  color: inherit;
+}
+
 .carousel-wrapper {
   overflow: hidden;
   position: relative;

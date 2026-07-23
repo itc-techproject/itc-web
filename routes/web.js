@@ -5,9 +5,20 @@ const path = require("path");
 const Blog = require("../models/Blog");
 
 /* HOME */
-router.get('/', (req, res) => {
-    res.render('pages/home');
+router.get("/", async (req, res) => {
+    try {
+        const blogs = await Blog.find()
+            .sort({ createdAt: -1 })
+            .limit(5);
+
+        res.render("pages/home", { blogs });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Terjadi kesalahan pada server");
+    }
 });
+
 
 /* HISTORY */
 router.get('/history', (req, res) => {

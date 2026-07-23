@@ -27,87 +27,62 @@
 
   <!-- CAROUSEL INDEX -->
 	<section class="section carousel" data-aos="fade-up">
-		<div class="container">
+    <div class="container">
 
-			<div class="carousel-header">
-				<h2 class="section-title">LATEST BLOG</h2>
-				<div class="carousel-controls">
-					<button class="carousel-btn prev">&#10094;</button>
-					<button class="carousel-btn next">&#10095;</button>
-				</div>
-			</div>
+      <div class="carousel-header">
+        <h2 class="section-title">LATEST BLOG</h2>
 
-			<div class="carousel-wrapper">
-				<div class="carousel-track">
+        <div class="carousel-controls">
+          <button class="carousel-btn prev">&#10094;</button>
+          <button class="carousel-btn next">&#10095;</button>
+        </div>
+      </div>
 
-					<!-- ITEM 1 -->
-					<div class="carousel-item">
-						<div class="carousel-card">
-							<div class="carousel-image">
-								<img src="/images/home_divisi.webp" alt="Lorem">
-							</div>
-							<div class="carousel-content">
-								<h3>Lorem Ipsum Dolor</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-							</div>
-						</div>
-					</div>
+      <div class="carousel-wrapper">
 
-					<!-- ITEM 2 -->
-					<div class="carousel-item">
-						<div class="carousel-card">
-							<div class="carousel-image">
-								<img src="/images/home_divisi.webp" alt="Lorem">
-							</div>
-							<div class="carousel-content">
-								<h3>Lorem Ipsum Dolor</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-							</div>
-						</div>
-					</div>
+        <div class="carousel-track">
 
-					<!-- ITEM 3 -->
-					<div class="carousel-item">
-						<div class="carousel-card">
-							<div class="carousel-image">
-								<img src="/images/home_divisi.webp" alt="Lorem">
-							</div>
-							<div class="carousel-content">
-								<h3>Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-							</div>
-						</div>
-					</div>
+          <% if (blogs && blogs.length > 0) { %>
 
-					<!-- ITEM 4 -->
-					<div class="carousel-item">
-						<div class="carousel-card">
-							<div class="carousel-image">
-								<img src="/images/home_divisi.webp" alt="Lorem">
-							</div>
-							<div class="carousel-content">
-								<h3>Lorem Ipsum Dolor</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-							</div>
-						</div>
-					</div>
+            <% blogs.forEach(function(blog) { %>
 
-					<!-- ITEM 5 -->
-					<div class="carousel-item">
-						<div class="carousel-card">
-							<div class="carousel-image">
-								<img src="/images/home_divisi.webp" alt="Lorem">
-							</div>
-							<div class="carousel-content">
-								<h3>Lorem Ipsum Dolor</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+              <div class="carousel-item">
+                <a href="/blog/<%= blog.slug %>" class="carousel-link">
+
+                  <div class="carousel-card">
+
+                    <div class="carousel-image">
+                      <img 
+                        src="<%= blog.image %>" 
+                        alt="<%= blog.title %>">
+                    </div>
+
+                    <div class="carousel-content">
+                      <h3><%= blog.title %></h3>
+                      <p><%= blog.excerpt %></p>
+                    </div>
+
+                  </div>
+
+                </a>
+              </div>
+
+            <% }) %>
+
+          <% } else { %>
+
+            <div class="carousel-empty">
+              <p>Belum ada artikel terbaru.</p>
+            </div>
+
+          <% } %>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section class="section about" id="about" data-aos="fade-up">
