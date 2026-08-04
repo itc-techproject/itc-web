@@ -1,77 +1,140 @@
 :root {
 
-  /* ===== CORE ===== */
-  --primary: #0b0d10;         
-  --secondary: #f1f5f9;     
+  /* ==========================================================
+     CORE
+  ========================================================== */
 
-  --bg-color-dark: #0b0d10;
-  --bg-color-light: #f1f5f9;
-  --section-bg-color: #111418; 
+  --primary: #05070b;
+  --secondary: #fcfcfc;
 
-  /* ===== TEXT ===== */
-  --text-dark: #0b0d10;
-  --text-light: #f1f5f9;
+  --bg-color-dark: #05070b;
+  --bg-color-light: #fcfcfc;
+  --section-bg-color: #0b1220;
 
-  --text-soft: rgba(241, 245, 249, 0.92);
-  --text-muted: rgba(241, 245, 249, 0.75);
-  --text-muted-strong: rgba(241, 245, 249, 0.7);
-  --text-muted-medium: rgba(241, 245, 249, 0.6);
-  --text-muted-light: rgba(241, 245, 249, 0.5);
+  /* ==========================================================
+     TEXT
+  ========================================================== */
 
-  /* ===== NAVBAR ===== */
+  --text-dark: #05070b;
+  --text-light: #fcfcfc;
+
+  --text-soft: rgba(252,252,252,.93);
+  --text-muted: rgba(252,252,252,.76);
+  --text-muted-strong: rgba(252,252,252,.68);
+  --text-muted-medium: rgba(252,252,252,.58);
+  --text-muted-light: rgba(252,252,252,.46);
+
+  /* ==========================================================
+     NAVBAR
+  ========================================================== */
+
   --navbar-height-desktop: 70px;
   --navbar-height-mobile: 65px;
 
-  /* ===== SURFACE ===== */
-  --surface-dropdown: #161a20;
-  --surface-overlay: rgba(11, 13, 16, 0.96);
-  --surface-hover: rgba(255, 255, 255, 0.05);
+  /* ==========================================================
+     SURFACE
+  ========================================================== */
 
-  --border-soft: rgba(255, 255, 255, 0.06);
+  --surface-dropdown: #111a2d;
+  --surface-overlay: rgba(5,7,11,.96);
 
-  --shadow-dropdown: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --surface-card: rgba(255,255,255,.035);
+  --surface-card-border: rgba(74,163,255,.12);
+  --surface-hover: rgba(74,163,255,.08);
+
+  --surface-elevated: rgba(255,255,255,.05);
+
+  /* ==========================================================
+     BORDER
+  ========================================================== */
+
+  --border-soft: rgba(255,255,255,.08);
+  --border-card-hover: rgba(74,163,255,.28);
+  --image-frame-border: rgba(255,255,255,.12);
+
+  /* ==========================================================
+     FUTURISTIC ACCENT
+  ========================================================== */
+
+  --accent-primary: #3f7cff;
+  --accent-secondary: #42b3ff;
+  --accent-tertiary: #72f0ff;
+
+  --accent-gradient: linear-gradient(
+      135deg,
+      #3f7cff 0%,
+      #42b3ff 45%,
+      #72f0ff 100%
+  );
+
+  --accent-glow: rgba(66,179,255,.55);
+  --accent-soft-bg: rgba(66,179,255,.10);
+
+  /* ==========================================================
+     GLASS
+  ========================================================== */
+
+  --glass-bg: rgba(255,255,255,.035);
+  --glass-border: rgba(114,240,255,.15);
+
+  /* ==========================================================
+     SHADOW
+  ========================================================== */
+
+  --shadow-dropdown: 0 20px 50px rgba(0,0,0,.55);
+
+  --shadow-soft: 0 18px 45px rgba(0,0,0,.60);
+  --shadow-card-hover: 0 25px 55px rgba(0,0,0,.70);
+
+  /* Neon Glow */
+
+  --shadow-accent: 0 0 18px rgba(66,179,255,.40);
+  --shadow-accent-medium: 0 0 30px rgba(66,179,255,.55);
+  --shadow-accent-strong: 0 0 55px rgba(114,240,255,.70);
+
+  /* ==========================================================
+     FOOTER
+  ========================================================== */
+
+  --footer-gradient-end: #020305;
+
+  /* ==========================================================
+     RADIUS
+  ========================================================== */
 
   --radius-small: 6px;
   --radius-medium: 12px;
   --radius-large: 20px;
 
-  /* ===== FOOTER ===== */
-  --footer-gradient-end: #07090c;
+  /* ==========================================================
+     TRANSITION
+  ========================================================== */
 
-  /* ===== CARD ===== */
-  --surface-card: rgba(255, 255, 255, 0.03);
-  --surface-card-border: rgba(255, 255, 255, 0.07);
+  --transition-fast: .25s ease;
+  --transition-normal: .35s ease;
+  --transition-slow: .55s ease;
 
-  /* ===== ACCENT ===== */
-  --accent-primary: #9ca3af;       /* cool gray accent */
-  --accent-glow: rgba(156, 163, 175, 0.35);
-  --accent-soft-bg: rgba(156, 163, 175, 0.08);
+  /* ==========================================================
+     IMAGE
+  ========================================================== */
 
-  /* ===== IMAGE FRAME ===== */
-  --image-frame-border: rgba(255, 255, 255, 0.1);
-
-  /* ===== SHADOW ===== */
-  --shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.5);
-
-  /* ===== INTERACTION ===== */
-  --transition-fast: 0.25s ease;
-  --transition-normal: 0.35s ease;
-
-  /* ===== CARD DEPTH ===== */
-  --shadow-card-hover: 0 20px 45px rgba(0, 0, 0, 0.6);
-
-  /* ===== CARD BORDER ENHANCE ===== */
-  --border-card-hover: rgba(255, 255, 255, 0.12);
-
-  /* ===== IMAGE EFFECT ===== */
   --image-zoom-scale: 1.06;
 
-  /* ===== PAGE STRUCTURE ===== */
+  /* ==========================================================
+     LAYOUT
+  ========================================================== */
+
   --container-width: 1200px;
   --section-padding: 100px;
   --section-padding-small: 60px;
 
-  /* ===== SURFACE VARIATION ===== */
-  --surface-elevated: rgba(255, 255, 255, 0.05);
-  
+  /* ==========================================================
+     EXTRA
+  ========================================================== */
+
+  --selection-bg: rgba(66,179,255,.22);
+
+  --scrollbar-thumb: #3f7cff;
+  --scrollbar-thumb-hover: #42b3ff;
+
 }
