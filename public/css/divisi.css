@@ -38,15 +38,15 @@ div[id] {
 .position-1 {
   display: flex;
   justify-content: center;
-  gap: 35px;
-  margin-bottom: 30px;
+  gap: 20px;
+  margin-bottom: 15px;
   flex-wrap: wrap;
 }
 
 .position-2 {
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -73,7 +73,7 @@ div[id] {
 
 .structure-img {
   width: 16vw;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
