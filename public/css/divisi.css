@@ -1,5 +1,9 @@
 body {
-    background: var(--section-bg-color);
+  background: linear-gradient(
+    180deg,
+    var(--bg-color-dark) 0%,
+    var(--section-bg-color) 100%
+  );
 }
 
 section[id], 
@@ -18,7 +22,6 @@ div[id] {
 
 .div-head-container {
   padding: 1px 20px;
-  background: var(--section-bg-color);
   text-align: center;
   margin: 0 0 60px 0;
 }
@@ -109,7 +112,6 @@ div[id] {
 
 .section-main {
   padding: 80px 20px;
-  background: var(--section-bg-color);
   color: var(--text-light);
 }
 

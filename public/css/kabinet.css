@@ -1,3 +1,11 @@
+body {
+  background: linear-gradient(
+    180deg,
+    var(--bg-color-dark) 0%,
+    var(--section-bg-color) 100%
+  );
+}
+
 section[id], 
 h3[id], 
 div[id] {
@@ -15,7 +23,6 @@ div[id] {
 
 /* Reset & Base */
 .kab-main-container {
-  background-color: var(--bg-color-dark);
   color: var(--text-light);
   padding: 60px 20px;
   font-family: 'Inter', sans-serif;

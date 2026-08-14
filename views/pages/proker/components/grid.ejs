@@ -1,0 +1,49 @@
+<div class="grid-container">
+    <% 
+      const groupedItems = items.reduce((groups, item) => {
+        if (!groups[item.year]) {
+          groups[item.year] = [];
+        }
+        groups[item.year].push(item);
+        return groups;
+      }, {});
+    %>
+    <% Object.keys(groupedItems)
+      .sort((a, b) => b - a)
+      .forEach(year => { %>
+      <section class="grid-year-section">
+        <div class="grid-year-header">
+          <span class="grid-year"><%= year %></span>
+          <div class="grid-year-line"></div>
+        </div>
+        <div class="grid">
+          <% groupedItems[year].forEach(item => { %>
+            <article class="grid-proker-item">
+              <a href="<%= item.url %>" class="grid-proker-link">
+                <div class="grid-proker-media">
+                  <img
+                    src="<%= item.cover %>"
+                    alt="<%= item.title %>"
+                  >
+                </div>
+                <div class="grid-proker-content">
+                  <aside class="grid-proker-date">
+                    <time datetime="<%= item.date %>">
+                      <%= new Date(item.date).toLocaleDateString('id-ID', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                      }) %>
+                    </time>
+                  </aside>
+                  <h2 class="grid-proker-title">
+                    <%= item.title %>
+                  </h2>
+                </div>
+              </a>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+    <% }) %>
+  </div>

@@ -1,0 +1,31 @@
+<div class="instagram-item">
+    <div class="instagram-embed">
+        <iframe
+            src="<%= item.embed %>"
+            frameborder="0"
+            scrolling="no"
+            allowtransparency="true"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="instagram-info">
+        <% if (item.title) { %>
+            <h3>
+                <%= item.title %>
+            </h3>
+        <% } %>
+        <% if (item.date) { %>
+            <span>
+                <%= item.date %>
+            </span>
+        <% } %>
+        <% if (item.url) { %>
+            <a
+                href="<%= item.url %>"
+                target="_blank"
+                rel="noopener noreferrer">
+                Lihat di Instagram
+            </a>
+        <% } %>
+    </div>
+</div>

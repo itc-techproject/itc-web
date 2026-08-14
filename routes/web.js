@@ -3,6 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 const Blog = require("../models/Blog");
+const prokers = require("../models/proker");
 
 /* HOME */
 router.get("/", async (req, res) => {
@@ -74,6 +75,23 @@ router.get('/blog', async (req, res) => {
         blogs,
         activeCategory: category || 'Semua'
     });
+});
+
+/* PROKER */
+/* PROKER */
+router.get("/proker/:slug", (req, res) => {
+
+    const proker = prokers[req.params.slug];
+
+    if (!proker) {
+        return res.status(404).send("Proker tidak ditemukan");
+    }
+
+    res.render("pages/proker/detail", {
+        page: proker.page,
+        items: proker.items
+    });
+
 });
 
 /* BLOG DETAIL */
