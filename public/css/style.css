@@ -18,6 +18,10 @@ body {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 /* ===== BUTTON ===== */
 .btn-modern {
   display: inline-block;
