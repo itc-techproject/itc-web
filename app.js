@@ -50,5 +50,9 @@ app.get('/PPAMEGO', (req, res) => {
   res.redirect('https://drive.google.com/drive/folders/1APCQWMK3L8CpK9KHkIJjusgdWInJIkke?usp=drive_link'); 
 });
 
+app.get('/PPAMEGO/Sertifikat', (req, res) => {
+  res.redirect('https://drive.google.com/drive/folders/1cJgRE_Pr2HS9ZkJ3XtlHLwmizakRZbD0?usp=sharing'); 
+});
+
 module.exports = app;
 
