@@ -54,5 +54,13 @@ app.get('/PPAMEGO/Sertifikat', (req, res) => {
   res.redirect('https://drive.google.com/drive/folders/1cJgRE_Pr2HS9ZkJ3XtlHLwmizakRZbD0?usp=sharing'); 
 });
 
+app.get('/Tetra/PendaftaranPanitBt2', (req, res) => {
+  res.redirect('https://docs.google.com/forms/d/e/1FAIpQLSfkIxHUo4Whyv9kJ-d4FS3WYESWUudET9AiWJTpyXB2dJcfNA/viewform?usp=publish-editor'); 
+});
+
+app.get('/Tetra/AnnounPanitBt2', (req, res) => {
+  res.redirect('https://docs.google.com/spreadsheets/d/12n458YWIaPQszr3HssNN0abzYpcvR71ufw9TLeWANhA/edit?usp=drivesdk'); 
+});
+
 module.exports = app;
 
