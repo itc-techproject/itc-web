@@ -25,8 +25,8 @@ module.exports = {
     {
       "year": "2026",
       "date": "2026-05-17",
-      "title": "PPA III 2026 - Turning Data Into Stories: Interactive Excel Dashboard",
-      "description": "Materi ini membahas cara mengolah data menjadi informasi yang menarik dan mudah dipahami melalui dashboard interaktif di Microsoft Excel. Peserta akan belajar membuat tabel, grafik, penggunaan rumus, hingga fitur interaktif seperti filter dan slicer untuk membantu penyajian data secara lebih efektif dan profesional.",
+      "title": "PPA III 2026 - The Art of Effective Communication",
+      "description": "Materi ini membahas keterampilan komunikasi yang efektif dalam menyampaikan ide, informasi, maupun presentasi. Peserta akan belajar teknik komunikasi verbal dan nonverbal, cara membangun kepercayaan diri, serta strategi menyampaikan pesan dengan jelas, menarik, dan persuasif dalam berbagai situasi.",
       "photos": [
         "/images/proker/PPA/PPA26015.webp",
         "/images/proker/PPA/PPA26016.webp",
@@ -54,8 +54,8 @@ module.exports = {
     {
       "year": "2026",
       "date": "2026-05-09",
-      "title": "PPA I 2026 - The Art of Effective Communication",
-      "description": "Materi ini membahas keterampilan komunikasi yang efektif dalam menyampaikan ide, informasi, maupun presentasi. Peserta akan belajar teknik komunikasi verbal dan nonverbal, cara membangun kepercayaan diri, serta strategi menyampaikan pesan dengan jelas, menarik, dan persuasif dalam berbagai situasi.",
+      "title": "PPA I 2026 - Turning Data Into Stories: Interactive Excel Dashboard",
+      "description": "Materi ini membahas cara mengolah data menjadi informasi yang menarik dan mudah dipahami melalui dashboard interaktif di Microsoft Excel. Peserta akan belajar membuat tabel, grafik, penggunaan rumus, hingga fitur interaktif seperti filter dan slicer untuk membantu penyajian data secara lebih efektif dan profesional.",
       "photos": [
         "/images/proker/PPA/PPA26001.webp",
         "/images/proker/PPA/PPA26002.webp",
