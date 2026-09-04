@@ -1,0 +1,62 @@
+<div class="image-container">
+  <% 
+    const groupedItems = items.reduce((groups, item) => {
+      if (!groups[item.year]) {
+        groups[item.year] = [];
+      }
+      groups[item.year].push(item);
+      return groups;
+    }, {});
+  %>
+
+  <% Object.keys(groupedItems)
+    .sort((a, b) => b - a)
+    .forEach(year => { %>
+    <section class="image-year-section">
+      <div class="image-year-header">
+        <span class="image-year"><%= year %></span>
+        <div class="image-year-line"></div>
+      </div>
+
+      <div class="image-grid">
+        <% groupedItems[year].forEach(item => { %>
+          <% const imageSrc = (item.photos && item.photos.length > 0) ? item.photos[0] : ''; %>
+          <article class="image-card" onclick="openImageLightbox('<%= imageSrc %>')">
+            <div class="image-media">
+              <img src="<%= imageSrc %>" alt="<%= item.title %>" loading="lazy">
+              <div class="image-overlay">
+                <span>Perbesar</span>
+              </div>
+            </div>
+            <% if (item.title) { %>
+              <div class="image-content">
+                <h3 class="image-title"><%= item.title %></h3>
+              </div>
+            <% } %>
+          </article>
+        <% }) %>
+      </div>
+    </section>
+  <% }) %>
+
+  <div id="image-lightbox" class="image-lightbox" onclick="closeImageLightbox()">
+    <img id="image-lightbox-img" src="" alt="Full Display">
+  </div>
+</div>
+
+<script>
+  function openImageLightbox(src) {
+    if (!src) return;
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('image-lightbox-img');
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Mengunci scroll saat lightbox terbuka
+  }
+
+  function closeImageLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = ''; // Mengembalikan scroll
+  }
+</script>

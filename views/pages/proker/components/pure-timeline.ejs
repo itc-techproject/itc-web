@@ -1,0 +1,57 @@
+<div class="pure-timeline-container">
+    <div class="pure-timeline">
+        <div class="pure-timeline-line"></div>
+        <% items.forEach(item => { %>
+            <article class="pure-timeline-item">
+                <% if (item.date) { %>
+                    <aside class="pure-timeline-date">
+                        <time datetime="<%= item.date %>">
+                            <%= new Date(item.date).toLocaleDateString('id-ID', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric'
+                            }) %>
+                        </time>
+                    </aside>
+                <% } else { %>
+                    <aside class="pure-timeline-date"></aside>
+                <% } %>
+                <div class="pure-timeline-node"></div>
+                <div class="pure-timeline-content">
+                    <h2 class="pure-timeline-title">
+                        <%= item.title %>
+                    </h2>
+                    <% if (item.description) { %>
+                        <p class="pure-timeline-description">
+                            <%= item.description %>
+                        </p>
+                    <% } %>
+                    <% if (item.photos && item.photos.length) { %>
+                        <div class="pure-timeline-media">
+                            <div class="pure-timeline-gallery">
+                                <% item.photos.forEach(photo => { %>
+                                    <div class="pure-timeline-photo">
+                                        <img
+                                            src="<%= photo %>"
+                                            alt="<%= item.title %>"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    <% } %>
+                    <% if (item.url) { %>
+                        <a
+                            href="<%= item.url %>"
+                            class="pure-timeline-link"
+                        >
+                            Lihat Selengkapnya
+                        </a>
+                    <% } %>
+                </div>
+            </article>
+        <% }) %>
+    </div>
+</div>

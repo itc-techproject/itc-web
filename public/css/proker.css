@@ -1,11 +1,8 @@
-
+/* =========================================
+   BASE & VARIABLES
+========================================= */
 body {
-  background: linear-gradient(
-    180deg,
-    var(--bg-color-dark) 0%,
-    var(--section-bg-color) 100%
-  );
-
+  background: linear-gradient(180deg, var(--bg-color-dark) 0%, var(--section-bg-color) 100%);
 }
 
 section[id], 
@@ -14,14 +11,9 @@ div[id] {
   scroll-margin-top: var(--navbar-height-desktop);
 }
 
-@media (max-width: 768px) {
-section[id], 
-h2[id], 
-div[id] {
-    scroll-margin-top: var(--navbar-height-mobile);
-  }
-}
-
+/* =========================================
+   PAGE HEADER
+========================================= */
 .proker-main-container {
   max-width: 1200px;
   margin: auto;
@@ -36,15 +28,11 @@ div[id] {
 
 .proker-page-header h1 {
   margin-bottom: 20px;
-  font-size: clamp(2rem, 5vw, 3rem);
+  /* Diperkecil ukuran minimalnya untuk mobile menjadi 1.6rem */
+  font-size: clamp(1.6rem, 5vw, 3rem);
   letter-spacing: -0.055em;
   font-weight: 700;
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #aeb5c0 100%
-    );
+  background: linear-gradient(180deg, #ffffff 0%, #aeb5c0 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -57,219 +45,13 @@ div[id] {
   line-height: 1.7;
 }
 
-
 /* =========================================
-   TIMELINE
+   PROKER GRID SECTION
 ========================================= */
-
-.timeline {
-  position: relative;
-  /*Root Khusus*/
-  --date-width: 190px;
-  --timeline-width: 40px;
-  --timeline-gap: 25px;
-  --content-width: 720px;
-}
-
-/* =========================================
-   TIMELINE LINE
-========================================= */
-
-.timeline-line {
-  position: absolute;
-  /*
-    Total width:
-    date        = 190px
-    gap         = 25px
-    timeline    = 40px
-    gap         = 25px
-    content     = 720px
-
-    Garis diletakkan tepat
-    di tengah kolom timeline.
-  */
-  left:
-    calc(
-      50%
-      -
-      (
-        var(--date-width)
-        +
-        var(--timeline-width)
-        +
-        var(--timeline-gap)
-        +
-        var(--timeline-gap)
-        +
-        var(--content-width)
-      ) / 2
-      +
-      var(--date-width)
-      +
-      var(--timeline-gap)
-      +
-      var(--timeline-width) / 2
-    );
-
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(255, 255, 255, 0.12) 5%,
-      rgba(255, 255, 255, 0.12) 95%,
-      transparent 100%
-    );
-  pointer-events: none;
-}
-
-/* =========================================
-   CONTENT
-========================================= */
-
-.proker-item {
-  position: relative;
-  display: grid;
-  grid-template-columns:
-    var(--date-width)
-    var(--timeline-width)
-    minmax(0, var(--content-width));
-  justify-content: center;
-  column-gap: var(--timeline-gap);
-  padding:
-    75px
-    0;
-  border-top: 1px solid var(--border-soft);
-}
-
-/* =========================================
-   DATE
-========================================= */
-.proker-date {
-  position: relative;
-  text-align: right;
-}
-
-.proker-date time {
-  position: sticky;
-  top: 90px;
-  display: block;
-  padding-top: 7px;
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-/* =========================================
-   TIMELINE NODE
-========================================= */
-.timeline-node {
-  position: sticky;
-  top: 102px;
-  z-index: 5;
-  justify-self: center;
-  width: 9px;
-  height: 9px;
-  margin-top: 12px;
-  align-self: start;
-  border-radius: 50%;
-  background: var(--accent-light);
-  box-shadow:
-    0 0 15px rgba(167, 139, 250, 0.65);
-}
-
-/* =========================================
-   CHANGELOG CONTENT
-========================================= */
-.proker-content {
-  min-width: 0;
-}
-
-/* =========================================
-   UPDATE TITLE
-========================================= */
-
-.proker-title {
-  display: inline-block;
-  margin-bottom: 16px;
-  color: var(--text-light);
-  font-size: 1.3rem;
-  font-weight: 650;
-  text-decoration: none;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
-  transition:
-    color 0.2s ease,
-    text-shadow 0.2s ease;
-}
-
-.proker-title:hover {
-  color: var(--accent-primary);
-  text-shadow:
-    0 0 20px rgba(167, 139, 250, 0.20);
-}
-
-
-/* =========================================
-   DESCRIPTION
-========================================= */
-.proker-description {
-  max-width: 680px;
-  margin-bottom: 30px;
-  color: var(--text-muted);
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-/* =========================================
-   MEDIA
-========================================= */
-.proker-media {
-  display: block;
-  width: 100%;
-  margin-bottom: 38px;
-  overflow: hidden;
-  border:
-    1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-  transition:
-    border-color 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.proker-media:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-  box-shadow:
-    0 15px 50px rgba(0, 0, 0, 0.35);
-}
-.proker-media img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-
-/* ==========================================================
-   PROKER GRID
-========================================================== */
-
 .grid-container {
   width: min(100%, var(--container-width));
   margin: 0 auto;
 }
-
-
-/* ==========================================================
-   YEAR SECTION
-========================================================== */
 
 .grid-year-section {
   margin-bottom: 80px;
@@ -284,186 +66,116 @@ div[id] {
 
 .grid-year {
   flex-shrink: 0;
-
   font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: .08em;
-
+  letter-spacing: 0.08em;
   color: var(--text-light);
-
   position: relative;
 }
 
 .grid-year::before {
   content: "";
   display: inline-block;
-
   width: 8px;
   height: 8px;
-
   margin-right: 10px;
-
   border-radius: 50%;
-
   background: var(--accent-secondary);
-
   box-shadow: var(--shadow-accent);
 }
 
 .grid-year-line {
   width: 100%;
   height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    var(--border-card-hover),
-    transparent
-  );
+  background: linear-gradient(90deg, var(--border-card-hover), transparent);
 }
-
-
-/* ==========================================================
-   GRID
-========================================================== */
 
 .grid {
   display: grid;
-
-  grid-template-columns: repeat(
-    5,
-    minmax(0, 1fr)
-  );
-
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 24px;
 }
 
-
-/* ==========================================================
-   CARD
-========================================================== */
-
+/* =========================================
+   PROKER GRID CARD
+========================================= */
 .grid-proker-item {
+  position: relative;
   min-width: 0;
   max-width: 270px;
-
   border: 1px solid var(--surface-card-border);
-
   border-radius: var(--radius-large);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.045),
-      rgba(255,255,255,.018)
-    );
-
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
   overflow: hidden;
+  transition: transform var(--transition-normal), border-color var(--transition-normal),
+              box-shadow var(--transition-normal), background var(--transition-normal);
+}
 
-  transition:
-    transform var(--transition-normal),
-    border-color var(--transition-normal),
-    box-shadow var(--transition-normal),
-    background var(--transition-normal);
+.grid-proker-item::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-left: -60px;
+  background: var(--accent-secondary);
+  opacity: 0;
+  filter: blur(80px);
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
 }
 
 .grid-proker-item:hover {
   transform: translateY(-7px);
-
   border-color: var(--border-card-hover);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(66,179,255,.075),
-      rgba(255,255,255,.025)
-    );
-
-  box-shadow:
-    var(--shadow-card-hover),
-    0 0 30px rgba(66,179,255,.08);
+  background: linear-gradient(145deg, rgba(66, 179, 255, 0.075), rgba(255, 255, 255, 0.025));
+  box-shadow: var(--shadow-card-hover), 0 0 30px rgba(66, 179, 255, 0.08);
 }
 
-
-/* ==========================================================
-   LINK
-========================================================== */
+.grid-proker-item:hover::before {
+  opacity: 0.08;
+}
 
 .grid-proker-link {
   display: block;
-
   height: 100%;
-
   color: inherit;
   text-decoration: none;
 }
 
-
-/* ==========================================================
-   IMAGE
-========================================================== */
-
 .grid-proker-media {
   position: relative;
-
   width: 100%;
-
   aspect-ratio: 4 / 5;
-
   overflow: hidden;
-
   background: var(--primary);
-
   border-bottom: 1px solid var(--image-frame-border);
 }
 
 .grid-proker-media::after {
   content: "";
-
   position: absolute;
   inset: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 55%,
-      rgba(5,7,11,.45)
-    );
-
+  background: linear-gradient(180deg, transparent 55%, rgba(5, 7, 11, 0.45));
   pointer-events: none;
 }
 
 .grid-proker-media img {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
-  transition:
-    transform var(--transition-slow),
-    filter var(--transition-normal);
+  transition: transform var(--transition-slow), filter var(--transition-normal);
 }
 
 .grid-proker-item:hover .grid-proker-media img {
   transform: scale(var(--image-zoom-scale));
-
   filter: brightness(1.08);
 }
-
-
-/* ==========================================================
-   CONTENT
-========================================================== */
 
 .grid-proker-content {
   padding: 20px 20px 22px;
 }
-
-
-/* ==========================================================
-   DATE
-========================================================== */
 
 .grid-proker-date {
   margin-bottom: 10px;
@@ -472,30 +184,19 @@ div[id] {
 .grid-proker-date time {
   display: inline-flex;
   align-items: center;
-
-  font-size: .78rem;
+  font-size: 0.78rem;
   font-weight: 600;
-
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-
   color: var(--accent-secondary);
 }
 
-
-/* ==========================================================
-   TITLE
-========================================================== */
-
 .grid-proker-title {
   margin: 0;
-
   font-size: 1.05rem;
   line-height: 1.45;
   font-weight: 650;
-
   color: var(--text-soft);
-
   transition: color var(--transition-fast);
 }
 
@@ -503,92 +204,831 @@ div[id] {
   color: var(--text-light);
 }
 
-
-/* ==========================================================
-   SUBTLE NEON EFFECT
-========================================================== */
-
-.grid-proker-item::before {
-  content: "";
-
-  position: absolute;
-
-  width: 120px;
-  height: 120px;
-
-  margin-top: -60px;
-  margin-left: -60px;
-
-  background: var(--accent-secondary);
-
-  opacity: 0;
-
-  filter: blur(80px);
-
-  pointer-events: none;
-
-  transition: opacity var(--transition-normal);
+/* =========================================
+   PURE TIMELINE LAYOUT
+========================================= */
+.pure-timeline-container {
+  width: min(100%, var(--container-width));
+  margin: 0 auto;
 }
 
-.grid-proker-item {
+.pure-timeline, .timeline {
   position: relative;
+  --date-width: 190px;
+  --timeline-width: 40px;
+  --timeline-gap: 25px;
+  --content-width: 720px;
 }
 
-.grid-proker-item:hover::before {
-  opacity: .08;
+.pure-timeline-line, .timeline-line {
+  position: absolute;
+  left: calc(50% - (var(--date-width) + var(--timeline-width) + var(--timeline-gap) * 2 + var(--content-width)) / 2 + var(--date-width) + var(--timeline-gap) + var(--timeline-width) / 2);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.12) 5%, rgba(255, 255, 255, 0.12) 95%, transparent 100%);
+  pointer-events: none;
 }
 
+.pure-timeline-item, .proker-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--date-width) var(--timeline-width) minmax(0, var(--content-width));
+  justify-content: center;
+  column-gap: var(--timeline-gap);
+  padding: 75px 0;
+  border-top: 1px solid var(--border-soft);
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 300px;
+}
+
+.pure-timeline-date, .proker-date {
+  position: relative;
+  text-align: right;
+}
+
+.pure-timeline-date time, .proker-date time {
+  position: sticky;
+  top: 90px;
+  display: block;
+  padding-top: 7px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.pure-timeline-node, .timeline-node {
+  position: sticky;
+  top: 102px;
+  z-index: 5;
+  justify-self: center;
+  align-self: start;
+  width: 9px;
+  height: 9px;
+  margin-top: 12px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  box-shadow: var(--shadow-accent);
+}
+
+.pure-timeline-content, .proker-content {
+  min-width: 0;
+}
+
+.pure-timeline-title, .proker-title {
+  display: inline-block;
+  margin: 0 0 16px;
+  color: var(--text-soft);
+  font-size: 1.3rem;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+  text-decoration: none;
+}
+
+.pure-timeline-item:hover .pure-timeline-title, 
+.proker-title:hover {
+  color: var(--text-light);
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.20);
+}
+
+.pure-timeline-description, .proker-description {
+  max-width: 680px;
+  margin: 0 0 30px;
+  color: var(--text-muted);
+  font-size: 15px; /* Sekitar 0.93rem */
+  line-height: 1.75;
+}
+
+/* =========================================
+   TIMELINE MEDIA & GALLERY
+========================================= */
+.pure-timeline-media, .proker-media {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+  overflow: hidden;
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius-large);
+  background: var(--primary);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.proker-media:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+}
+
+.proker-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.pure-timeline-gallery {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  padding: 14px;
+  animation: pure-timeline-scroll 35s linear infinite;
+}
+
+.pure-timeline-media:hover .pure-timeline-gallery {
+  animation-play-state: paused;
+}
+
+.pure-timeline-photo {
+  flex: 0 0 240px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: calc(var(--radius-large) - 5px);
+  background: var(--surface);
+  border: 1px solid var(--image-frame-border);
+}
+
+.pure-timeline-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), filter var(--transition-normal);
+}
+
+.pure-timeline-photo:hover img {
+  transform: scale(var(--image-zoom-scale));
+  filter: brightness(1.08);
+}
+
+/* FADE EFFECT */
+.pure-timeline-media::before,
+.pure-timeline-media::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 80px;
+  pointer-events: none;
+}
+
+.pure-timeline-media::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+.pure-timeline-media::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--primary), transparent);
+}
+
+/* TIMELINE LINK */
+.pure-timeline-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 15px;
+  border: 1px solid var(--border-card-hover);
+  border-radius: 8px;
+  color: var(--text-soft);
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast), background var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.pure-timeline-link:hover {
+  color: var(--text-light);
+  background: rgba(66, 179, 255, 0.08);
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+@keyframes pure-timeline-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 7px)); }
+}
 
 /* ==========================================================
-   TABLET
-========================================================== */
-
-@media (max-width: 900px) {
-
-  .grid {
-    grid-template-columns: repeat(
-      2,
-      minmax(0, 1fr)
-    );
-
-    gap: 20px;
-  }
-
-}
-
-
-/* ==========================================================
-   MOBILE
+   MOBILE COMPACT (MAX 600px)
 ========================================================== */
 
 @media (max-width: 600px) {
-
-  .grid-year-section {
-    margin-bottom: 60px;
+  
+  /* 1. TAMBAHKAN PADDING KIRI & KANAN AGAR TIDAK MEPET LAYAR */
+  .proker-page-header,
+  .grid-container,
+  .pure-timeline-container {
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
-  .grid-year-header {
-    gap: 14px;
+  /* HEADER ADJUSTMENTS */
+  .proker-page-header { 
+    padding-top: 80px; 
+    padding-bottom: 60px; 
+  }
+  .proker-page-description { 
+    font-size: 0.9rem; 
+  }
 
+  /* ==========================================
+     GRID ADJUSTMENTS (What's In)
+  ========================================== */
+  .grid-year-section { margin-bottom: 60px; }
+  .grid-year-header { gap: 14px; margin-bottom: 20px; }
+  .grid-year { font-size: 1.15rem; }
+  
+  .grid { 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+  }
+  
+  /* Hapus batas max-width agar card membentang penuh di layar HP */
+  .grid-proker-item {
+    max-width: 100%; 
+  }
+
+  /* Ubah rasio gambar grid di HP agar tidak terlalu memanjang ke bawah */
+  .grid-proker-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .grid-proker-content { padding: 18px 20px 22px; }
+  .grid-proker-title { font-size: 1rem; }
+  
+
+  /* ==========================================
+     TIMELINE ADJUSTMENTS (PPA)
+  ========================================== */
+  .pure-timeline, .timeline {
+    --timeline-width: 28px; /* Sedikit dilebarkan agar titik tidak terlalu terjepit */
+    --timeline-gap: 16px;
+  }
+  
+  /* Pastikan garis ada di tengah-tengah kolom node */
+  .pure-timeline-line, .timeline-line {
+    left: calc(var(--timeline-width) / 2);
+  }
+
+  .pure-timeline-item, .proker-item {
+    grid-template-columns: var(--timeline-width) minmax(0, 1fr);
+    column-gap: var(--timeline-gap);
+    padding: 35px 0; /* Jarak antar item timeline direnggangkan sedikit */
+  }
+
+  .pure-timeline-date, .proker-date {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .pure-timeline-date time, .proker-date time {
+    position: static;
+    padding: 0;
+    font-size: 0.75rem; 
+  }
+
+  .pure-timeline-node, .timeline-node {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    margin-top: 5px;
+  }
+
+  .pure-timeline-content, .proker-content {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .pure-timeline-title, .proker-title {
+    font-size: 1.1rem; 
+    margin-bottom: 12px;
+  }
+
+  .pure-timeline-description, .proker-description {
+    font-size: 0.9rem; 
+    line-height: 1.6;
     margin-bottom: 20px;
   }
 
-  .grid-year {
+  .pure-timeline-photo {
+    flex-basis: 180px; 
+  }
+
+  .pure-timeline-media::before,
+  .pure-timeline-media::after {
+    width: 45px;
+  }
+}
+
+/* ==========================================================
+   BOOK LAYOUT (REUSABLE)
+========================================================== */
+
+.book-grid-container {
+  width: min(100%, var(--container-width, 1200px));
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+/* CARD ITEM */
+.book-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--surface-card-border, rgba(255, 255, 255, 0.1));
+  border-radius: var(--radius-large, 16px);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-card-hover, rgba(66, 179, 255, 0.4));
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(66, 179, 255, 0.1);
+}
+
+/* COVER IMAGE (Rasio A4) */
+.book-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.414;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.book-card:hover .book-cover img {
+  transform: scale(1.08);
+}
+
+/* HOVER OVERLAY */
+.book-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.book-card:hover .book-overlay {
+  opacity: 1;
+}
+
+.book-overlay span {
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-overlay span {
+  transform: translateY(0);
+}
+
+/* CONTENT TEXT */
+.book-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.book-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: var(--text-light, #e2e8f0);
+  line-height: 1.4;
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE (MAX 600px)
+========================================================== */
+@media (max-width: 600px) {
+  .book-grid-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+  }
+
+  .book-content {
+    padding: 14px 10px;
+  }
+
+  .book-title {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ==========================================================
+   YOUTUBE CONTAINER & YEAR SECTION
+========================================================== */
+
+.youtube-container {
+  width: min(100%, var(--container-width, 1200px));
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.youtube-year-section {
+  margin-bottom: 50px;
+}
+
+.youtube-year-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.youtube-year {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-light, #e2e8f0);
+}
+
+.youtube-year-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* ==========================================================
+   YOUTUBE GRID & CARD
+========================================================== */
+
+.youtube-grid {
+  display: grid;
+  /* Dibuat minimal 280px agar video landscape tidak terlalu sempit */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.youtube-item {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--surface-card-border, rgba(255, 255, 255, 0.1));
+  border-radius: var(--radius-large, 16px);
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.youtube-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-card-hover, rgba(66, 179, 255, 0.4));
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* EMBED IFRAME (LANDSCAPE 16:9) */
+.youtube-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.youtube-media iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* CONTENT & TEXT */
+.youtube-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.youtube-date {
+  font-size: 0.75rem;
+  color: var(--text-muted, #94a3b8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.youtube-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light, #e2e8f0);
+  line-height: 1.4;
+}
+
+.youtube-link {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ff4e4e;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.youtube-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE (MAX 600px)
+========================================================== */
+
+@media (max-width: 600px) {
+  .youtube-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .youtube-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .youtube-content {
+    padding: 14px;
+  }
+
+  .youtube-title {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* =========================================
+   IMAGE GALLERY SECTION (MADING / GALLERY)
+========================================= */
+.image-container {
+  width: min(100%, var(--container-width, 1200px));
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.image-year-section {
+  margin-bottom: 80px;
+}
+
+.image-year-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.image-year {
+  flex-shrink: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-light, #e2e8f0);
+  position: relative;
+}
+
+.image-year::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--accent-secondary, #42b3ff);
+  box-shadow: var(--shadow-accent, 0 0 10px rgba(66, 179, 255, 0.5));
+}
+
+.image-year-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-card-hover, rgba(66, 179, 255, 0.4)), transparent);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+/* =========================================
+   IMAGE CARD ITEM
+========================================= */
+.image-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+  border: 1px solid var(--surface-card-border, rgba(255, 255, 255, 0.1));
+  border-radius: var(--radius-large, 16px);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform var(--transition-normal, 0.3s ease), border-color var(--transition-normal, 0.3s ease),
+              box-shadow var(--transition-normal, 0.3s ease), background var(--transition-normal, 0.3s ease);
+}
+
+.image-card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-left: -60px;
+  background: var(--accent-secondary, #42b3ff);
+  opacity: 0;
+  filter: blur(80px);
+  pointer-events: none;
+  transition: opacity var(--transition-normal, 0.3s ease);
+}
+
+.image-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--border-card-hover, rgba(66, 179, 255, 0.4));
+  background: linear-gradient(145deg, rgba(66, 179, 255, 0.075), rgba(255, 255, 255, 0.025));
+  box-shadow: var(--shadow-card-hover, 0 15px 35px rgba(0, 0, 0, 0.4)), 0 0 30px rgba(66, 179, 255, 0.08);
+}
+
+.image-card:hover::before {
+  opacity: 0.08;
+}
+
+/* MEDIA & OVERLAY */
+.image-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* Rasio potret cocok untuk mading/poster */
+  overflow: hidden;
+  background: var(--primary, #0f172a);
+  border-bottom: 1px solid var(--image-frame-border, rgba(255, 255, 255, 0.08));
+}
+
+.image-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow, 0.5s ease), filter var(--transition-normal, 0.3s ease);
+}
+
+.image-card:hover .image-media img {
+  transform: scale(var(--image-zoom-scale, 1.08));
+  filter: brightness(1.08);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  backdrop-filter: blur(3px);
+  transition: opacity 0.3s ease;
+}
+
+.image-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay span {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(15px);
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover .image-overlay span {
+  transform: translateY(0);
+}
+
+/* CONTENT TEXT */
+.image-content {
+  padding: 18px 20px 20px;
+  text-align: center;
+}
+
+.image-title {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-weight: 650;
+  color: var(--text-soft, #cbd5e1);
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.image-card:hover .image-title {
+  color: var(--text-light, #ffffff);
+}
+
+/* =========================================
+   LIGHTBOX OVERLAY (FULLSCREEN POPUP)
+========================================= */
+.image-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(5, 7, 11, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.image-lightbox.active {
+  display: flex;
+}
+
+.image-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius-large, 12px);
+  border: 1px solid var(--surface-card-border, rgba(255, 255, 255, 0.15));
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(66, 179, 255, 0.1);
+}
+
+/* =========================================
+   MOBILE RESPONSIVE (MAX 600px)
+========================================= */
+@media (max-width: 600px) {
+  .image-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .image-year-section {
+    margin-bottom: 60px;
+  }
+
+  .image-year-header {
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .image-year {
     font-size: 1.15rem;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-
-    gap: 18px;
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
   }
 
-  .grid-proker-content {
-    padding: 17px 18px 20px;
+  .image-content {
+    padding: 12px 10px 14px;
   }
 
-  .grid-proker-title {
-    font-size: 1rem;
+  .image-title {
+    font-size: 0.92rem;
   }
-
 }

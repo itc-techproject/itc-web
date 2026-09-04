@@ -16,6 +16,10 @@
       <%- include('./components/pure-timeline', { items: items }) %>
     <% } else if (page.layout === 'no-timeline') { %>
       <%- include('./components/no-timeline', { items: items }) %>
+    <% } else if (page.layout === 'youtube') { %>
+      <%- include('./components/youtube', { items: items }) %>
+    <% } else if (page.layout === 'image') { %>
+      <%- include('./components/image', { items: items }) %>
     <% } else { %>
       <p>Layout not found</p>
     <% } %>

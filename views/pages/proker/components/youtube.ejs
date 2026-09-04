@@ -1,0 +1,52 @@
+<div class="youtube-container">
+    <% 
+      const groupedItems = items.reduce((groups, item) => {
+        const year = item.year || (item.date ? new Date(item.date).getFullYear() : 'Lainnya');
+        if (!groups[year]) {
+          groups[year] = [];
+        }
+        groups[year].push(item);
+        return groups;
+      }, {});
+    %>
+
+    <% Object.keys(groupedItems)
+      .sort((a, b) => b - a)
+      .forEach(year => { %>
+      <section class="youtube-year-section">
+        <div class="youtube-year-header">
+          <span class="youtube-year"><%= year %></span>
+          <div class="youtube-year-line"></div>
+        </div>
+
+        <div class="youtube-grid">
+          <% groupedItems[year].forEach(item => { %>
+            <article class="youtube-item">
+              <div class="youtube-media">
+                <iframe
+                  src="<%= item.embed %>"
+                  title="<%= item.title || 'YouTube video' %>"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+
+              <div class="youtube-content">
+
+                <h2 class="youtube-title">
+                  <%= item.title %>
+                </h2>
+
+                <% if (item.url) { %>
+                  <a href="<%= item.url %>" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                    Tonton di YouTube
+                  </a>
+                <% } %>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+    <% }) %>
+</div>
