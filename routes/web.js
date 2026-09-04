@@ -37,12 +37,105 @@ router.get('/history', (req, res) => {
 });
 
 /* STATIC PAGE (kecuali blog) */
-const pages = ['kabinet', 'divisi'];
+const pages = ['kabinet'];
 
 pages.forEach(page => {
     router.get(`/${page}`, (req, res) => {
         res.render(`pages/${page}`);
     });
+});
+
+
+/* DIVISI */
+// Helper untuk mengekstrak Thumbnail dari URL/Embed YouTube
+function getYouTubeThumbnail(url) {
+    if (!url || typeof url !== 'string') return null;
+
+    // Regex untuk mengambil 11 karakter ID video YouTube (mendukung format youtu.be, embed, watch?v=)
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+
+    if (match && match[2].length === 11) {
+        const videoId = match[2];
+        // Menggunakan hqdefault.jpg yang dijamin selalu tersedia di YouTube
+        return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    }
+    return null;
+}
+
+// Helper untuk mengekstrak URL/path foto dari berbagai nama properti & YouTube
+function extractPhoto(item) {
+    // 1. Cek nama-nama properti gambar (ditambahkan coverImage & cover_image)
+    const photoSources = [
+        item.photos, item.foto, item.images, 
+        item.coverImage, item.cover_image, item.cover, 
+        item.gambar, item.image
+    ];
+
+    for (const src of photoSources) {
+        if (Array.isArray(src) && src.length > 0 && src[0]) return src[0];
+        if (typeof src === 'string' && src.trim() !== '') return src;
+    }
+
+    // 2. Fallback: Jika gambar tidak ada, cek URL / Embed YouTube
+    const videoUrlSources = [item.embed, item.url, item.link];
+    for (const videoUrl of videoUrlSources) {
+        const ytThumbnail = getYouTubeThumbnail(videoUrl);
+        if (ytThumbnail) return ytThumbnail;
+    }
+
+    return null;
+}
+
+// Helper untuk mengekstrak tanggal
+function extractDate(item) {
+    const rawDate = item.date || item.tanggal || item.created_at || item.year || item.tahun;
+    if (!rawDate) return null;
+
+    const parsedDate = new Date(rawDate);
+    return isNaN(parsedDate.getTime()) ? null : parsedDate;
+}
+
+router.get('/divisi', (req, res) => {
+    const prokerCovers = {};
+
+    if (!prokers || typeof prokers !== 'object') {
+        return res.render('pages/divisi', { prokerCovers });
+    }
+
+    Object.entries(prokers).forEach(([slug, proker]) => {
+        if (!proker?.items?.length) {
+            prokerCovers[slug] = null;
+            return;
+        }
+
+        // 1. Petakan item yang memiliki foto/thumbnail valid
+        const validItems = proker.items
+            .map(item => ({
+                photo: extractPhoto(item),
+                date: extractDate(item),
+                originalItem: item
+            }))
+            .filter(entry => entry.photo !== null);
+
+        if (validItems.length === 0) {
+            prokerCovers[slug] = null;
+            return;
+        }
+
+        // 2. Urutkan berdasarkan tanggal terbaru
+        validItems.sort((a, b) => {
+            if (!a.date && !b.date) return 0;
+            if (!a.date) return 1;
+            if (!b.date) return -1;
+            return b.date - a.date;
+        });
+
+        // 3. Ambil foto/thumbnail dari item teratas
+        prokerCovers[slug] = validItems[0].photo;
+    });
+
+    res.render('pages/divisi', { prokerCovers });
 });
 
 router.get('/blog', async (req, res) => {
