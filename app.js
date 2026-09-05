@@ -66,5 +66,9 @@ app.get('/Tetra/JobdeskPanitia', (req, res) => {
   res.redirect('https://drive.google.com/file/d/1QmRAlhZtlYAQumhA8yNoX3QKvYkeC95B/view?usp=drivesdk'); 
 });
 
+app.get('/Tetra/GuideBook', (req, res) => {
+  res.redirect('https://drive.google.com/file/d/1DDfRRg3dk3Y8TkI4cNuXrxlFmP9PyGsE/view?usp=drivesdk'); 
+});
+
 module.exports = app;
 
