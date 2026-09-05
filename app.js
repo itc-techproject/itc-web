@@ -63,7 +63,7 @@ app.get('/Tetra/AnnounPanitBt2', (req, res) => {
 });
 
 app.get('/Tetra/JobdeskPanitia', (req, res) => {
-  res.redirect('https://drive.google.com/file/d/1QmRAlhZtlYAQumhA8yNoX3QKvYkeC95B/view?usp=drivesdk'); 
+  res.redirect('https://drive.google.com/file/d/18MZxcSIEP6q0CK8pHFFENyD0DkwI3P0m/view?usp=drive_link'); 
 });
 
 app.get('/Tetra/GuideBook', (req, res) => {
