@@ -70,5 +70,9 @@ app.get('/Tetra/GuideBook', (req, res) => {
   res.redirect('https://drive.google.com/file/d/1DDfRRg3dk3Y8TkI4cNuXrxlFmP9PyGsE/view?usp=drivesdk'); 
 });
 
+app.get('/OprecAnggota', (req, res) => {
+  res.redirect('https://forms.gle/NgCyt2wrVnQ1CjRWA')
+});
+
 module.exports = app;
 
