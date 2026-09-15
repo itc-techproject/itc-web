@@ -74,5 +74,9 @@ app.get('/OprecAnggota', (req, res) => {
   res.redirect('https://forms.gle/NgCyt2wrVnQ1CjRWA')
 });
 
+app.get('/anggotaukmitc2026', (req, res) => {
+  res.redirect('https://docs.google.com/spreadsheets/d/1scE3j_hLaRO06DiBexaQ4w_lg7BZU0HgQMR1mYjk1p8/edit?hl=id&gid=0#gid=0')
+});
+
 module.exports = app;
 
