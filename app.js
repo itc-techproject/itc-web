@@ -70,6 +70,14 @@ app.get('/Tetra/GuideBook', (req, res) => {
   res.redirect('https://drive.google.com/file/d/1DDfRRg3dk3Y8TkI4cNuXrxlFmP9PyGsE/view?usp=drivesdk'); 
 });
 
+app.get('/Tetra/Pendaftaran', (req, res) => {
+  res.redirect('https://docs.google.com/forms/d/e/1FAIpQLScObz8wbMuIRLakY_nMzRZvjZCbm68k1gxazwm6rBzghfSCTQ/viewform?usp=dialog'); 
+});
+
+app.get('/Tetra/RSVP', (req, res) => {
+  res.redirect('https://docs.google.com/forms/d/e/1FAIpQLSeLmT4exvOZk6RmDqQIAAykYv7_wWatQ5m14wyJ0Blqtpy-iQ/viewform?usp=dialog'); 
+});
+
 app.get('/OprecAnggota', (req, res) => {
   res.redirect('https://forms.gle/NgCyt2wrVnQ1CjRWA')
 });
