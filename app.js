@@ -78,6 +78,10 @@ app.get('/Tetra/RSVP', (req, res) => {
   res.redirect('https://docs.google.com/forms/d/e/1FAIpQLSeLmT4exvOZk6RmDqQIAAykYv7_wWatQ5m14wyJ0Blqtpy-iQ/viewform?usp=dialog'); 
 });
 
+app.get('/Tetra/Twibbon', (req, res) => {
+  res.redirect('https://twb.nz/technologytraining2026'); 
+});
+
 app.get('/OprecAnggota', (req, res) => {
   res.redirect('https://forms.gle/NgCyt2wrVnQ1CjRWA')
 });
