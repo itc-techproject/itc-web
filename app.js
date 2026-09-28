@@ -79,7 +79,7 @@ app.get('/Tetra/RSVP', (req, res) => {
 });
 
 app.get('/Tetra/Twibbon', (req, res) => {
-  res.redirect('https://twb.nz/technologytraining2026'); 
+  res.redirect('https://twb.nz/technology-training-2026'); 
 });
 
 app.get('/OprecAnggota', (req, res) => {
